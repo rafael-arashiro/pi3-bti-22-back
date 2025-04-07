@@ -7,7 +7,7 @@ module.exports = {
       host: process.env.SERVER,
       user: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
-      database: 'pi1bti22$default',
+      database: process.env.DB,
     },
     migrations: {
       directory: 'src/migrations',
