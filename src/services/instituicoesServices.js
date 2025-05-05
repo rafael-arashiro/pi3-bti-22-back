@@ -18,8 +18,28 @@ module.exports = (app) => {
     return app.db('instituicoes').where({ nome: instituicao.nome });
   };
 
+  const getInstituicoesPorServico = async (servico) => {
+    const instituicoesListaPorServico = await app
+      .db('instituicoes')
+      .where({ servico })
+      .select('*');
+
+    return instituicoesListaPorServico;
+  };
+
+  const updateInstituicao = async (id, instituicao) => {
+    return app.db('instituicoes').where({ id }).update(instituicao);
+  };
+
+  const deleteInstituicao = async (id) => {
+    return app.db('instituicoes').where({ id }).del();
+  };
+
   return {
     getInstituicoes,
     postInstituicoes,
+    getInstituicoesPorServico,
+    updateInstituicao,
+    deleteInstituicao,
   };
 };
